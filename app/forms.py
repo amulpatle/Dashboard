@@ -20,28 +20,63 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
-    username = forms.CharField(
+    first_name = forms.CharField(
+        max_length=30,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
             }
         )
     )
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(
+    last_name = forms.CharField(
+        max_length=30,
+        widget=forms.TextInput(
             attrs={
                 "class": "form-control"
             }
         )
     )
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(
+    profile_picture = forms.ImageField(
+        required=False,
+        widget=forms.FileInput(
+            attrs={
+                "class": "form-control-file"
+            }
+        )
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
             attrs={
                 "class": "form-control"
             }
         )
     )
-    email = forms.CharField(
+    address_line1 = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    city = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    state = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+    pincode = forms.CharField(
+        max_length=10,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control"
@@ -51,4 +86,4 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_admin', 'is_employee', 'is_customer')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'is_admin', 'is_employee', 'is_customer')
